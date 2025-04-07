@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG - 径向渐变</title>
+  </head>
+
+  <body>
+    <svg width="1200" height="1200">
+      <defs>
+        <radialGradient id="radialGradient1" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
+          <stop offset="0%" stop-color="red" />
+          <stop offset="50%" stop-color="yellow" />
+          <stop offset="100%" stop-color="green" />
+        </radialGradient>
+
+        <radialGradient id="radialGradient2" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="1">
+          <stop offset="0%" stop-color="red" />
+          <stop offset="50%" stop-color="yellow" />
+          <stop offset="100%" stop-color="green" />
+        </radialGradient>
+
+        <radialGradient id="radialGradient3" cx="0.5" cy="0.5" r="0.5" fx="1" fy="0.5">
+          <stop offset="0%" stop-color="red" />
+          <stop offset="50%" stop-color="yellow" />
+          <stop offset="100%" stop-color="green" />
+        </radialGradient>
+
+        <radialGradient id="radialGradient4" cx="0.5" cy="0.5" r="0.5" fx="1" fy="1">
+          <stop offset="0%" stop-color="red" />
+          <stop offset="50%" stop-color="yellow" />
+          <stop offset="100%" stop-color="green" />
+        </radialGradient>
+      </defs>
+      <rect x="10" y="10" width="180" height="180" fill="url(#radialGradient1)" />
+      <rect x="200" y="10" width="180" height="180" fill="url(#radialGradient2)" />
+      <rect x="10" y="200" width="180" height="180" fill="url(#radialGradient3)" />
+      <rect x="200" y="200" width="180" height="180" fill="url(#radialGradient4)" />
+    </svg>
+  </body>
+
+</html>

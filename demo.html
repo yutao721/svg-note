@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flame Graph svg</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      svg {
+        width: 100%;
+        height: 100vh;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .svg-container {
+        flex: 1;
+        width: 100%;
+        position: relative;
+      }
+
+      .container .svg {
+        display: block;
+        width: 100%;
+      }
+
+      .content-container {
+        width: 400px;
+        min-height: 600px;
+        background-color: #f90;
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        color: #FFF;
+        border-bottom: 1px solid #ccc;
+        padding: 10px 30px;
+        cursor: pointer;
+      }
+
+      .item:hover {
+        background-color: #ccc;
+        color: rgb(111, 13, 13);
+      }
+
+      .reset {
+        width: 200px;
+        height: 50px;
+        background-color: #f90;
+        color: #FFF;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        margin: 20px auto;
+        cursor: pointer;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="svg-container">
+        <!-- 引入svg -->
+        <object class="svg" data="./assets/perf_20638_fs_press.out.svg" style="border: 1px solid steelblue"></object>
+
+        <button class="reset">重置</button>
+      </div>
+      <div class="content-container"></div>
+    </div>
+
+    <script>
+
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // 获取<object>元素
+        const objectElement = document.querySelector('object.svg');
+        console.log(objectElement);
+        const contentContainer = document.querySelector('.content-container');
+        const svgContainer = document.querySelector('.svg-container');
+        const resetButton = document.querySelector('.reset');
+
+        objectElement.addEventListener('load', () => {
+          // 获取object中的svg元素
+          const svgElement = objectElement.contentDocument.querySelector('svg');
+
+          // 获取svg里面所有的.func_g
+          const funcGs = svgElement.querySelectorAll('.func_g');
+          console.log(funcGs);
+
+          // 获取svg里面的unzoom
+          const unzoom = svgElement.querySelector('#unzoom');
+          resetButton.addEventListener('click', () => {
+            unzoom.dispatchEvent(new Event('click'));
+          })
+
+          // 为unzoom绑定点击事件
+
+          // 遍历.func_g
+          funcGs.forEach(funcG => {
+            // 获取func_g的中text标签的文本
+            const text = funcG.querySelector('text').textContent;
+            console.log(text);
+            if (text) {
+              // 创建一个新的div元素
+              const div = document.createElement('div');
+              // 设置div的class
+              div.className = 'item';
+              // 设置div的文本
+              div.textContent = text;
+              // 将funcGs绑定的事件与div相互绑定
+              div.addEventListener('click', () => {
+                funcG.dispatchEvent(new Event('click'));
+              })
+              div.addEventListener('mouseover', () => {
+                funcG.dispatchEvent(new Event('mouseover'));
+              })
+              div.addEventListener('mouseout', () => {
+                funcG.dispatchEvent(new Event('mouseout'));
+              })
+              // 将div添加到content-container中
+              contentContainer.appendChild(div);
+            }
+          })
+        });
+      })
+    </script>
+  </body>
+
+</html>

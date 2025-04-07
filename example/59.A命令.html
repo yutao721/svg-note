@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG - path</title>
+  </head>
+
+  <body>
+    <svg width="300px" height="1000px">
+      <path d="M10 100 50 100  A 30 50 0 0 1 150 100 L 200 100" fill="none" style="stroke: #4000ff" />
+      <!-- 旋转45度的弧（第三个参数） -->
+      <path d="M10 200 50 200  A 30 50 45 0 1 150 200 L 200 200" fill="none" style="stroke: #4000ff"  />
+      <!-- 1表示大角度弧（第四个参数） -->
+      <path d="M10 300 50 300  A 30 50 -45 1 1 150 300 L 200 300" fill="none" style="stroke: #4000ff"  />
+      <!-- 0逆时针（第五个参数） -->
+      <path d="M10 400 50 400  A 30 50 0 1 0 150 400 L 200 400" fill="none" style="stroke: #4000ff"  />
+    </svg>
+  </body>
+
+</html>

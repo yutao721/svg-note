@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG - 文字</title>
+  </head>
+
+  <body>
+    <svg width="600" height="500">
+      <!-- 定义路径M -->
+      <path id="pathM" d="M 50 50 100 100 200 50 300 100" fill="none" />
+      <!-- 定义路径Q -->
+      <path id="pathQ" d="M50 100 Q 175 200 300 100 T 600 100" fill="none" />
+      <text>
+        <textPath xlink:href="#pathM"> Welcome to the world of SVG ! </textPath>
+      </text>
+      <text>
+        <textPath xlink:href="#pathQ"> Welcome to the world of SVG ! Welcome to the world of SVG ! </textPath>
+      </text>
+    </svg>
+  </body>
+
+</html>

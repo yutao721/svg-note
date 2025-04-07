@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG - GSAP简单使用</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  </head>
+
+  <body>
+    <svg width="500" height="500">
+      <rect x="10" y="10" width="50" height="50" fill="red" />
+    </svg>
+    <script>
+      gsap.to('rect', {
+        x: 300,
+        duration: 2,
+        repeat: -1,
+        yoyo: true
+      });
+    </script>
+  </body>
+
+</html>
